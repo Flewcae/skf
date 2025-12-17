@@ -34,6 +34,7 @@ urlpatterns = [
         views.processed_products,
         name="processed_products"
     ),
+    path("_internal/download-db/", views.download_sqlite),
 
 
 ]

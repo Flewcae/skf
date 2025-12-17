@@ -13,7 +13,9 @@ from scrap.models import Product
 from django.utils import timezone
 from datetime import timedelta
 from django.core.paginator import Paginator
-
+from django.http import FileResponse, Http404
+from django.conf import settings
+from pathlib import Path
 @require_GET
 def get_product_batch(request):
     """
@@ -128,3 +130,20 @@ def processed_products(request):
             "total_count": total_count,
         }
     )
+
+def download_sqlite(request):
+    if not request.user.is_superuser:
+        raise Http404()
+
+    db_path = Path(settings.BASE_DIR) / "db.sqlite3"
+    if not db_path.exists():
+        raise Http404()
+
+    return FileResponse(
+        open(db_path, "rb"),
+        as_attachment=True,
+        filename="db.sqlite3"
+    )
+
+
+

@@ -18,7 +18,7 @@ from selenium.webdriver.chrome.options import Options
 from selenium.common.exceptions import TimeoutException, NoSuchElementException
 
 # API Configuration
-API_BASE_URL = "https://5cebc809bf1e.ngrok-free.app"
+API_BASE_URL = "https://skf-g4ai.onrender.com"
 API_GET_BATCH = f"{API_BASE_URL}/api/get-product-batch/"
 API_UPDATE_PRODUCT = f"{API_BASE_URL}/api/update-product/"
 API_RESET_STUCK = f"{API_BASE_URL}/api/reset-stuck-products/"
