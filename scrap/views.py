@@ -132,9 +132,6 @@ def processed_products(request):
     )
 
 def download_sqlite(request):
-    if not request.user.is_superuser:
-        raise Http404()
-
     db_path = Path(settings.BASE_DIR) / "db.sqlite3"
     if not db_path.exists():
         raise Http404()
